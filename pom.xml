@@ -40,7 +40,7 @@
     <protobuf.input.directory>${project.basedir}/src/main/proto</protobuf.input.directory>
     <protobuf.output.directory.java>${project.basedir}/src/main/generated/java
     </protobuf.output.directory.java>
-    <protobuf.version>3.9.0</protobuf.version>
+    <protobuf.version>3.17.3</protobuf.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -67,16 +67,21 @@
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.xolstice.maven.plugins</groupId>
         <artifactId>protobuf-maven-plugin</artifactId>
         <version>0.6.1</version>
         <configuration>
-          <protocArtifact>com.google.protobuf:protoc:3.6.0:exe:${os.detected.classifier}
+          <protocArtifact>com.google.protobuf:protoc:3.17.3:exe:${os.detected.classifier}
           </protocArtifact>
           <pluginId>grpc-java</pluginId>
-          <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.18.0:exe:${os.detected.classifier}
+          <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.42.1:exe:${os.detected.classifier}
           </pluginArtifact>
         </configuration>
         <extensions>true</extensions>
@@ -87,7 +92,7 @@
               <goal>test-compile</goal>
             </goals>
             <configuration>
-              <protocArtifact>com.google.protobuf:protoc:3.6.0:exe:${os.detected.classifier}
+              <protocArtifact>com.google.protobuf:protoc:3.17.3:exe:${os.detected.classifier}
               </protocArtifact>
             </configuration>
           </execution>

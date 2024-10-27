@@ -5,6 +5,8 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.Sets;
 import com.google.common.io.Resources;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Set;
 import org.antlr.v4.runtime.CharStream;
@@ -113,9 +115,19 @@ public class TurkishLexer extends Lexer {
   private static Locale localeTr = new Locale("tr");
 
   static {
+    String abbreviationsFilePath = System.getenv("ABBREVIATIONS_FILE_PATH");
+    java.net.URL fileUrl;
+    if(abbreviationsFilePath == null) {
+      fileUrl = Resources.getResource("tokenization/abbreviations.txt");
+    } else {
+        try {
+            fileUrl = new URL(abbreviationsFilePath);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     try {
-      for (String line : Resources
-          .readLines(Resources.getResource("tokenization/abbreviations.txt"), Charsets.UTF_8)) {
+      for (String line : Resources.readLines(fileUrl, Charsets.UTF_8)) {
         if (line.trim().length() > 0) {
           final String abbr = line.trim().replaceAll("\\s+", ""); // erase spaces
           if (abbr.endsWith(".")) {

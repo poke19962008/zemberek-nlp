@@ -8,6 +8,8 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import com.google.common.io.Resources;
 import zemberek.core.logging.Log;
 import zemberek.core.text.TextIO;
 import zemberek.core.turkish.PrimaryPos;

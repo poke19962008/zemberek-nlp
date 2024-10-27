@@ -75,9 +75,6 @@ public class DictionarySerializer {
       item.setReferenceItem(ref);
     }
 
-    long end = System.currentTimeMillis();
-    Log.info("Root lexicon created in %d ms.", (end - start));
-
     return loadedLexicon;
   }
 
