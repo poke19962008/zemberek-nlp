@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: zemberek.core.collections.FixedBitVectorTest
--------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.225 s -- in zemberek.core.collections.FixedBitVectorTest
